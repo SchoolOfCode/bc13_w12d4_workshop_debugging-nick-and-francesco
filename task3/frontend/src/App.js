@@ -6,12 +6,12 @@ import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 
 export default function App() {
-  const [todoList, settodoList] = useState([]);
+  const [todoList, setTodoList] = useState([]);
 
   const existingTodo = async () => {
     const data = await fetch("http://localhost:3001/users");
     const response = await data.json();
-    settodoList(response);
+    setTodoList(response);
   };
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function App() {
       id: uuidv4(),
       content: task,
     };
-    const response = await fetch("http://localhost:3001/uses", {
+    const response = await fetch("http://localhost:3001/users", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ export default function App() {
       body: JSON.stringify(todo) 
     });
     const data = await response.json()
-    settodoList(data);
+    setTodoList(data);
   };
 
   return (
