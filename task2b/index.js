@@ -48,8 +48,7 @@ function calculator(firstNumber, operator, secondNumber) {
     return answer;
   } else {
     let answer = "Invalid inputs. Try again!";
-    return;
-    answer;
+    return answer;
   }
 }
 
